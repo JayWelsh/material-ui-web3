@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import { useEthers } from '@usedapp/core'
+
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -30,7 +32,9 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function NavigationTopBar(props: PropsFromRedux) {
-  const classes = useStyles();
+  const classes = useStyles()
+
+  const { activateBrowserWallet, deactivate, account } = useEthers()
 
   const [localShowLeftMenu, setLocalShowLeftMenu] = useState(props.showLeftMenu)
   const [localDarkMode, setLocalDarkMode] = useState(props.darkMode)
@@ -45,7 +49,7 @@ export default function NavigationTopBar(props: PropsFromRedux) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar style={{background: 'linear-gradient(-90deg, #272727, #000000)'}} position="static">
         <Toolbar>
           <IconButton onClick={() => props.setShowLeftMenu(!localShowLeftMenu)} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
@@ -53,7 +57,11 @@ export default function NavigationTopBar(props: PropsFromRedux) {
           <Typography variant="h6" className={classes.title}>
             Material UI Web3
           </Typography>
-          <Button color="inherit">Login</Button>
+          {account ? (
+            <Button color="inherit" onClick={() => deactivate()}>Disconnect</Button>
+          ) : (
+            <Button color="inherit" onClick={() => activateBrowserWallet()}>Connect</Button>
+          )}
           <IconButton color="inherit" onClick={() => props.setDarkMode(!localDarkMode)} aria-label="delete" className={classes.margin}>
             {localDarkMode ? <DarkModeIcon /> : <LightModeIcon/>}
           </IconButton>

@@ -21,6 +21,12 @@ const App = (props: PropsFromRedux) => {
       createMuiTheme({
         palette: {
           type: props.darkMode ? 'dark' : 'light',
+          ...(props.darkMode && {
+            background: {
+              default: "#131313",
+              paper: "#2b2b2b"
+            }
+          })
         },
       }),
     [props.darkMode],

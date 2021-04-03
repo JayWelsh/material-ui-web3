@@ -1,16 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
+import { ChainId, DAppProvider } from '@usedapp/core'
 
 import './styles/index.css';
 import AppContainer from './containers/AppContainer';
 import reportWebVitals from './reportWebVitals';
 import store from './state';
 
+const config = {
+  readOnlyChainId: ChainId.Mainnet,
+  readOnlyUrls: {
+    [ChainId.Mainnet]: 'https://mainnet.infura.io/v3/62687d1a985d4508b2b7a24827551934',
+  },
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <AppContainer />
+      <DAppProvider config={config}>
+        <AppContainer />
+      </DAppProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
