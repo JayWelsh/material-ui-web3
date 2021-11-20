@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import { withRouter, RouteComponentProps } from "react-router";
+
 import { useEthers } from '@usedapp/core'
 
 import { Theme } from '@mui/material/styles';
@@ -26,6 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       flexGrow: 1,
+      cursor: 'pointer',
     },
     margin: {
       margin: theme.spacing(1),
@@ -33,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function NavigationTopBar(props: PropsFromRedux) {
+const NavigationTopBar = (props: PropsFromRedux & RouteComponentProps) => {
   const classes = useStyles()
 
   const { activateBrowserWallet, deactivate, account } = useEthers()
@@ -62,7 +65,7 @@ export default function NavigationTopBar(props: PropsFromRedux) {
             size="large">
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <Typography onClick={() => props.history.push('/')} variant="h6" className={classes.title}>
             Material UI Web3
           </Typography>
           {account ? (
@@ -83,3 +86,5 @@ export default function NavigationTopBar(props: PropsFromRedux) {
     </div>
   );
 }
+
+export default withRouter(NavigationTopBar)
