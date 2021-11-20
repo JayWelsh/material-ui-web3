@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 
 import { useEthers } from '@usedapp/core'
 
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import DarkModeIcon from '@material-ui/icons/NightsStay';
-import LightModeIcon from '@material-ui/icons/WbSunny';
+import { Theme } from '@mui/material/styles';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import DarkModeIcon from '@mui/icons-material/NightsStay';
+import LightModeIcon from '@mui/icons-material/WbSunny';
 
 import { PropsFromRedux } from '../containers/NavigationTopBarContainer';
 
@@ -51,7 +53,13 @@ export default function NavigationTopBar(props: PropsFromRedux) {
     <div className={classes.root}>
       <AppBar style={{background: 'linear-gradient(-90deg, #272727, #000000)'}} position="static">
         <Toolbar>
-          <IconButton onClick={() => props.setShowLeftMenu(!localShowLeftMenu)} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton
+            onClick={() => props.setShowLeftMenu(!localShowLeftMenu)}
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+            size="large">
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
@@ -62,7 +70,12 @@ export default function NavigationTopBar(props: PropsFromRedux) {
           ) : (
             <Button color="inherit" onClick={() => activateBrowserWallet()}>Connect</Button>
           )}
-          <IconButton color="inherit" onClick={() => props.setDarkMode(!localDarkMode)} aria-label="delete" className={classes.margin}>
+          <IconButton
+            color="inherit"
+            onClick={() => props.setDarkMode(!localDarkMode)}
+            aria-label="delete"
+            className={classes.margin}
+            size="large">
             {localDarkMode ? <DarkModeIcon /> : <LightModeIcon/>}
           </IconButton>
         </Toolbar>

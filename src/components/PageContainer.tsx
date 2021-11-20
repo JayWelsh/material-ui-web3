@@ -1,7 +1,10 @@
 import React from 'react';
 import {Route, withRouter, Switch, RouteComponentProps} from 'react-router-dom';
 
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { Theme } from '@mui/material/styles';
+
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
 
 import Navigation from './Navigation';
 import HomePage from '../pages/HomePage';
