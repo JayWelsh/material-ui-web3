@@ -4,7 +4,7 @@ Material UI Web3 is relatively barebones boilerplate for Ethereum DApps. This pr
 
 ## Getting started
 
-First off, it's important to rename `.env.example` to `.env` and add your Infura API key to this file, this will enable your DApp to work in read-only mode (i.e. before a user connects their wallet provider).
+First off, it's important to rename `.env.example` to `.env` and add your Infura or Alchemy API key to this file (also remove the example entry that won't be used), this will enable your DApp to work in read-only mode (i.e. before a user connects their wallet provider).
 
 Before using this in a live deployment, make sure to replace the favicon and logos located in the `public` folder.
 

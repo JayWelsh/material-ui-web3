@@ -8,10 +8,19 @@ import AppContainer from './containers/AppContainer';
 import reportWebVitals from './reportWebVitals';
 import store from './state';
 
+const mainnetReadOnlyUrl = () => {
+  if(process.env.REACT_APP_INFURA_KEY) {
+    return `wss://mainnet.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}`;
+  } else if(process.env.REACT_APP_ALCHEMY_KEY) {
+    return `wss://eth-mainnet.alchemyapi.io/v2/${process.env.REACT_APP_INFURA_KEY}`;
+  }
+  return '';
+}
+
 const config = {
   readOnlyChainId: ChainId.Mainnet,
   readOnlyUrls: {
-    [ChainId.Mainnet]: `https://mainnet.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}`,
+    [ChainId.Mainnet]: mainnetReadOnlyUrl(),
   },
 }
 

@@ -16,6 +16,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import DarkModeIcon from '@mui/icons-material/NightsStay';
 import LightModeIcon from '@mui/icons-material/WbSunny';
 
+import LogoDarkMode from '../assets/svg/logo.svg'
+import LogoLightMode from '../assets/svg/logo.svg'
+
 import { PropsFromRedux } from '../containers/NavigationTopBarContainer';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -65,6 +68,7 @@ const NavigationTopBar = (props: PropsFromRedux & RouteComponentProps) => {
             size="large">
             <MenuIcon />
           </IconButton>
+          <img onClick={() => props.history.push('/')} height={'36px'} style={{marginRight: '10px', cursor: 'pointer'}} src={localDarkMode ? LogoDarkMode : LogoLightMode} alt="logo" />
           <Typography onClick={() => props.history.push('/')} variant="h6" className={classes.title}>
             Material UI Web3
           </Typography>
