@@ -1,12 +1,11 @@
 import React from 'react';
 
-import { Router } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 import { createTheme, StyledEngineProvider, Theme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import '../styles/App.css';
-import { configureHistory } from '../utils';
 import { PropsFromRedux } from '../containers/AppContainer';
 import BlockNumberIndicator from './BlockNumberIndicator';
 
@@ -15,8 +14,6 @@ declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
 }
-
-const history = configureHistory();
 
 const App = (props: PropsFromRedux) => {
 
@@ -37,7 +34,7 @@ const App = (props: PropsFromRedux) => {
   );
 
   return (
-    <Router history={history}>
+    <HashRouter>
         <StyledEngineProvider injectFirst>
           <ThemeProvider theme={theme}>
             <CssBaseline/>
@@ -45,7 +42,7 @@ const App = (props: PropsFromRedux) => {
             <BlockNumberIndicator/>
           </ThemeProvider>
         </StyledEngineProvider>
-    </Router>
+    </HashRouter>
   );
 }
 
