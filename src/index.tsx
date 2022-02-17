@@ -22,6 +22,7 @@ const config = {
   readOnlyUrls: {
     [ChainId.Mainnet]: mainnetReadOnlyUrl(),
   },
+  autoConnect: false,
 }
 
 ReactDOM.render(
