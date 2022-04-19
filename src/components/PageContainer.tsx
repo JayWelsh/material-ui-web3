@@ -9,6 +9,7 @@ import createStyles from '@mui/styles/createStyles';
 import Navigation from './Navigation';
 import HomePage from '../pages/HomePage';
 import ExamplePage from '../pages/ExamplePage';
+import DressUpPage from '../pages/game-folder/DressUpPage';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,6 +30,7 @@ const PageContainer = () => {
                 <Switch>
                     <Route path="/" exact render={(props) => homeRoute(props)} />
                     <Route path="/example" exact render={(props) => exampleRoute(props)} />
+                    <Route path="/dressUp" exact render={(props) => dressUpRoute(props)} />
                 </Switch>
             </div>
         </Navigation>
@@ -44,6 +46,12 @@ const homeRoute = (props: RouteComponentProps) => {
 const exampleRoute = (props: RouteComponentProps) => {
     return (
         <ExamplePage/>
+    )
+}
+
+const dressUpRoute = (props: RouteComponentProps) => {
+    return (
+        <DressUpPage/>
     )
 }
 

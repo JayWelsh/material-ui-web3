@@ -23,6 +23,11 @@ const navigationMenu = [
 		path: '/example',
 		icon: <ExampleIcon />
 	},
+  {
+		text: 'Dress-up',
+		path: '/dressUp',
+		icon: <ExampleIcon />
+	},
 ];
 
 const useStyles = makeStyles({
