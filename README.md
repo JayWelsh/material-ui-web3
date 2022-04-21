@@ -6,7 +6,7 @@ Material UI Web3 is relatively barebones boilerplate for Ethereum DApps. This pr
 
 ## IPFS-ready
 
-This repository has been constructed to be easily deployable to IPFS, running a `yarn build` and uploading the build folder to IPFS will result in a ready-to-use IPFS deployment without needing to make any further adjustments (e.g. hash routing & package.json config), here is a [demo ipfs deployment](https://vagabond.mypinata.cloud/ipfs/QmeNxURjGqpHE7EZ83GGeQNv1Zcr3PMG3n2DYvT3sA8dvr/#/).
+This repository has been constructed to be easily deployable to [IPFS](https://ipfs.io/), running a `yarn build` and uploading the build folder to IPFS will result in a ready-to-use IPFS deployment without needing to make any further adjustments (e.g. hash routing & package.json config), here is a [demo ipfs deployment](https://vagabond.mypinata.cloud/ipfs/QmeNxURjGqpHE7EZ83GGeQNv1Zcr3PMG3n2DYvT3sA8dvr/#/).
 
 ## Getting started
 
