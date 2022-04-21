@@ -22,6 +22,11 @@ export const Web3ModalButton = () => {
     }
   }, [error])
 
+  useEffect(() => {
+    // Can handle switches to unsupported chainId(s) here
+    console.log("Current chainId", chainId);
+  })
+
   const activateProvider = async () => {
     const providerOptions = {
       injected: {
