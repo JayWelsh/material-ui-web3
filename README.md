@@ -2,7 +2,7 @@ https://user-images.githubusercontent.com/14224459/164458916-f8475fd0-efcf-4d7d-
 
 # Material UI Web3
 
-Material UI Web3 is relatively barebones boilerplate for Ethereum DApps. This project makes use of primarily Ethers.js and useDapp to interface with the Ethereum blockchain, using Material UI (MUI) V5 for the user interface.
+Material UI Web3 is relatively barebones boilerplate for Ethereum DApps. This project makes use of primarily [Ethers](https://docs.ethers.io/v5/) and [useDapp](https://usedapp-docs.netlify.app/docs) to interface with the Ethereum blockchain, using [Material UI](https://mui.com/) (MUI) V5 for the user interface. [Redux](https://redux.js.org/) boilerplate is built-in. [Web3Modal](https://github.com/Web3Modal/web3modal) support has also been included.
 
 ## Getting started
 
