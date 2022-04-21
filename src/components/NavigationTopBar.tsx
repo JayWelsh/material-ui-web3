@@ -75,7 +75,7 @@ const NavigationTopBar = (props: PropsFromRedux & RouteComponentProps) => {
             aria-label="delete"
             className={classes.margin}
             size="large">
-            {localDarkMode ? <DarkModeIcon /> : <LightModeIcon/>}
+            {localDarkMode ? <LightModeIcon/> : <DarkModeIcon />}
           </IconButton>
         </Toolbar>
       </AppBar>
