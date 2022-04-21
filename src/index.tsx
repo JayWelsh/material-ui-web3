@@ -9,10 +9,10 @@ import reportWebVitals from './reportWebVitals';
 import store from './state';
 
 const mainnetReadOnlyUrl = () => {
-  if(process.env.REACT_APP_INFURA_KEY) {
-    return `wss://mainnet.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}`;
-  } else if(process.env.REACT_APP_ALCHEMY_KEY) {
-    return `wss://eth-mainnet.alchemyapi.io/v2/${process.env.REACT_APP_INFURA_KEY}`;
+  if(process.env.REACT_APP_INFURA_RPC_URL) {
+    return `${process.env.REACT_APP_INFURA_RPC_URL}`;
+  } else if(process.env.REACT_APP_ALCHEMY_RPC_URL) {
+    return `${process.env.REACT_APP_ALCHEMY_RPC_URL}`;
   }
   return '';
 }

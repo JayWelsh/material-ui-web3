@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Fragment} from 'react';
 import { withRouter, RouteComponentProps } from "react-router";
 
 import makeStyles from '@mui/styles/makeStyles';
@@ -108,7 +108,7 @@ function NavigationLeftSideBar(props: PropsWithRouter) {
                 >
                   <List>
                       {navigationMenu.map((item, index) => 
-                          <>
+                          <Fragment key={`parent-${index}`}>
                             <ListItem 
                               onClick={() => {
                                 if(item.path) {
@@ -118,7 +118,8 @@ function NavigationLeftSideBar(props: PropsWithRouter) {
                                   toggleOpenCollapseState(index)
                                 }
                               }}
-                              button key={item.text}>
+                              button
+                            >
                                 <ListItemIcon>{item.icon}</ListItemIcon>
                                 <ListItemText primary={item.text} />
                                 {item.children &&
@@ -130,14 +131,15 @@ function NavigationLeftSideBar(props: PropsWithRouter) {
                             {item.children &&
                               <Collapse in={openCollapseSections.indexOf(index) > -1} timeout="auto" unmountOnExit>
                                 <List component="div" disablePadding>
-                                  {item.children.map(child => 
-                                      <ListItemButton 
+                                  {item.children.map((child, childIndex) => 
+                                      <ListItemButton
                                         onClick={() => {
                                           if(child.path.length > 0) {
                                             props.history.push(child.path)
                                             props.setShowLeftMenu(false)
                                           }
                                         }}
+                                        key={`child-${index}-${childIndex}`}
                                         sx={{ pl: 4 }}
                                       >
                                         <ListItemIcon>{child.icon}</ListItemIcon>
@@ -147,7 +149,7 @@ function NavigationLeftSideBar(props: PropsWithRouter) {
                                 </List>
                               </Collapse>
                             }
-                          </>
+                          </Fragment>
                       )}
                   </List>
                 </div>
