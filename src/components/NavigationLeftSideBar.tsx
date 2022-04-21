@@ -18,19 +18,19 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import { PropsFromRedux } from '../containers/NavigationLeftSideBarContainer';
 
 const navigationMenu = [
-	{
-		text: 'Home',
-		path: '/',
-		icon: <HomeIcon />
-	},
   {
-		text: 'Example',
-		path: '/example',
-		icon: <ExampleIcon />
-	},
+    text: 'Home',
+    path: '/',
+    icon: <HomeIcon />
+  },
   {
-		text: 'With Children',
-		icon: <AccountTreeIcon />,
+    text: 'Example',
+    path: '/example',
+    icon: <ExampleIcon />
+  },
+  {
+    text: 'With Children',
+    icon: <AccountTreeIcon />,
     children: [
       {
         text: 'Example',
@@ -43,7 +43,7 @@ const navigationMenu = [
         icon: <HomeIcon />
       },
     ]
-	},
+  },
 ];
 
 const useStyles = makeStyles({
