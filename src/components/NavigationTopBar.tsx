@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 import { withRouter, RouteComponentProps } from "react-router";
 
-import { useEthers } from '@usedapp/core'
-
 import { Theme } from '@mui/material/styles';
 import createStyles from '@mui/styles/createStyles';
 import makeStyles from '@mui/styles/makeStyles';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import DarkModeIcon from '@mui/icons-material/NightsStay';
@@ -19,6 +16,7 @@ import LightModeIcon from '@mui/icons-material/WbSunny';
 import LogoDarkMode from '../assets/svg/logo.svg'
 import LogoLightMode from '../assets/svg/logo.svg'
 
+import { Web3ModalButton } from './Web3ModalButton';
 import { PropsFromRedux } from '../containers/NavigationTopBarContainer';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -41,8 +39,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const NavigationTopBar = (props: PropsFromRedux & RouteComponentProps) => {
   const classes = useStyles()
-
-  const { activateBrowserWallet, deactivate, account } = useEthers()
 
   const [localShowLeftMenu, setLocalShowLeftMenu] = useState(props.showLeftMenu)
   const [localDarkMode, setLocalDarkMode] = useState(props.darkMode)
@@ -72,18 +68,14 @@ const NavigationTopBar = (props: PropsFromRedux & RouteComponentProps) => {
           <Typography onClick={() => props.history.push('/')} variant="h6" className={classes.title}>
             Material UI Web3
           </Typography>
-          {account ? (
-            <Button color="inherit" onClick={() => deactivate()}>Disconnect</Button>
-          ) : (
-            <Button color="inherit" onClick={() => activateBrowserWallet()}>Connect</Button>
-          )}
+          <Web3ModalButton/>
           <IconButton
             color="inherit"
             onClick={() => props.setDarkMode(!localDarkMode)}
             aria-label="delete"
             className={classes.margin}
             size="large">
-            {localDarkMode ? <DarkModeIcon /> : <LightModeIcon/>}
+            {localDarkMode ? <LightModeIcon/> : <DarkModeIcon />}
           </IconButton>
         </Toolbar>
       </AppBar>

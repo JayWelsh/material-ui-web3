@@ -43,7 +43,16 @@ const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
 	250: '',
 	43114: '',
 	19: '',
-	1287: ''
+	1287: '',
+	25: '',
+	338: '',
+	1284: '',
+	42262: '',
+	588: '',
+	69: '',
+	10: '',
+	42161: '',
+	421611: '',
 }
   
 export function getEtherscanLink(
