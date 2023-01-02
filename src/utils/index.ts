@@ -1,11 +1,4 @@
-import { createBrowserHistory, createHashHistory } from 'history';
 import { ChainId, shortenAddress } from '@usedapp/core'
-
-export function configureHistory() {
-	return window.matchMedia('(display-mode: standalone)').matches
-		? createHashHistory()
-		: createBrowserHistory()
-}
 
 export const centerShortenLongString = (string: string, maxLength: number) => {
 	if(typeof string === 'string') {
@@ -22,7 +15,7 @@ export const centerShortenLongString = (string: string, maxLength: number) => {
 	}
 }
 
-const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
+const ETHERSCAN_PREFIXES: { [chainId in ChainId]?: string } = {
 	1: '',
 	3: 'ropsten.',
 	4: 'rinkeby.',

@@ -1,5 +1,5 @@
 import React, {useState, useEffect, Fragment} from 'react';
-import { withRouter, RouteComponentProps } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 import makeStyles from '@mui/styles/makeStyles';
 import Drawer from '@mui/material/Drawer';
@@ -55,10 +55,10 @@ const useStyles = makeStyles({
   },
 });
 
-type PropsWithRouter = RouteComponentProps & PropsFromRedux;
-
-function NavigationLeftSideBar(props: PropsWithRouter) {
+function NavigationLeftSideBar(props: PropsFromRedux) {
   const classes = useStyles();
+
+  let navigate = useNavigate();
 
   const [openCollapseSections, setOpenCollapseSections] = useState<Number[]>([]);
 
@@ -112,7 +112,7 @@ function NavigationLeftSideBar(props: PropsWithRouter) {
                             <ListItem 
                               onClick={() => {
                                 if(item.path) {
-                                  props.history.push(item.path)
+                                  navigate(item.path)
                                   props.setShowLeftMenu(false)
                                 } else if (item.children) {
                                   toggleOpenCollapseState(index)
@@ -135,7 +135,7 @@ function NavigationLeftSideBar(props: PropsWithRouter) {
                                       <ListItemButton
                                         onClick={() => {
                                           if(child.path.length > 0) {
-                                            props.history.push(child.path)
+                                            navigate(child.path)
                                             props.setShowLeftMenu(false)
                                           }
                                         }}
@@ -159,4 +159,4 @@ function NavigationLeftSideBar(props: PropsWithRouter) {
   );
 }
 
-export default withRouter(NavigationLeftSideBar)
+export default NavigationLeftSideBar;

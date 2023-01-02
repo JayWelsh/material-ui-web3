@@ -10,7 +10,7 @@ import WalletConnectProvider from '@walletconnect/web3-provider'
 
 export const Web3ModalButton = () => {
   const { account, activate, deactivate, chainId } = useEthers()
-  const ens = useLookupAddress()
+  const ens = useLookupAddress(account)
   const [activateError, setActivateError] = useState('')
   const { error } = useEthers()
   useEffect(() => {

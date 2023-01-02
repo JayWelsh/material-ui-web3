@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { withRouter, RouteComponentProps } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 import { Theme } from '@mui/material/styles';
 import createStyles from '@mui/styles/createStyles';
@@ -37,8 +37,10 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const NavigationTopBar = (props: PropsFromRedux & RouteComponentProps) => {
+const NavigationTopBar = (props: PropsFromRedux) => {
   const classes = useStyles()
+
+  let navigate = useNavigate();
 
   const [localShowLeftMenu, setLocalShowLeftMenu] = useState(props.showLeftMenu)
   const [localDarkMode, setLocalDarkMode] = useState(props.darkMode)
@@ -64,8 +66,8 @@ const NavigationTopBar = (props: PropsFromRedux & RouteComponentProps) => {
             size="large">
             <MenuIcon />
           </IconButton>
-          <img onClick={() => props.history.push('/')} height={'36px'} style={{marginRight: '10px', cursor: 'pointer'}} src={localDarkMode ? LogoDarkMode : LogoLightMode} alt="logo" />
-          <Typography onClick={() => props.history.push('/')} variant="h6" className={classes.title}>
+          <img onClick={() => navigate('/')} height={'36px'} style={{marginRight: '10px', cursor: 'pointer'}} src={localDarkMode ? LogoDarkMode : LogoLightMode} alt="logo" />
+          <Typography onClick={() => navigate('/')} variant="h6" className={classes.title}>
             Material UI Web3
           </Typography>
           <Web3ModalButton/>
@@ -83,4 +85,4 @@ const NavigationTopBar = (props: PropsFromRedux & RouteComponentProps) => {
   );
 }
 
-export default withRouter(NavigationTopBar)
+export default NavigationTopBar

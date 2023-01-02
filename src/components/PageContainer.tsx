@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, withRouter, Switch, RouteComponentProps} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 
 import { Theme } from '@mui/material/styles';
 
@@ -26,25 +26,13 @@ const PageContainer = () => {
     return (
         <Navigation>
             <div className={classes.root}>
-                <Switch>
-                    <Route path="/" exact render={(props) => homeRoute(props)} />
-                    <Route path="/example" exact render={(props) => exampleRoute(props)} />
-                </Switch>
+                <Routes>
+                    <Route path="/" element={<HomePage/>} />
+                    <Route path="/example" element={<ExamplePage/>} />
+                </Routes>
             </div>
         </Navigation>
     )
 }
 
-const homeRoute = (props: RouteComponentProps) => {
-    return (
-        <HomePage/>
-    )
-}
-
-const exampleRoute = (props: RouteComponentProps) => {
-    return (
-        <ExamplePage/>
-    )
-}
-
-export default withRouter(PageContainer);
+export default PageContainer;
