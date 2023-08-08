@@ -8,9 +8,6 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-import { useEtherBalance, useEthers } from '@usedapp/core'
-import { formatEther } from '@ethersproject/units'
-
 import example from '../assets/svg/example.svg';
 
 import { STAKING_CONTRACT } from '../utils/constants'
@@ -40,17 +37,16 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const HomePage = () => {
     const classes = useStyles();
-    const { account } = useEthers()
     
-    const userBalance = useEtherBalance(account)
-    const stakingBalance = useEtherBalance(STAKING_CONTRACT)
+    // const userBalance = useEtherBalance(account)
+    // const stakingBalance = useEtherBalance(STAKING_CONTRACT)
 
     return (
         <Container maxWidth="md">
             <div className={classes.imageContainer}>
                 <img className={classes.exampleImage} src={example} alt="example" />
             </div>
-            <div>
+            {/* <div>
                 {stakingBalance && (
                     <Card className={classes.root}>
                         <CardContent>
@@ -87,7 +83,7 @@ const HomePage = () => {
                         </CardContent>
                     </Card>
                 )}
-            </div>
+            </div> */}
         </Container>
     )
 };
